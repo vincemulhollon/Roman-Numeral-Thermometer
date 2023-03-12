@@ -22,8 +22,14 @@ namespace Roman_Numeral_Thermometer
             { return celsius; }
             set
             {
-                // TODO Exception handling for input below -90.0
-                // TODO Exception handling for input above +60.0
+                if (value < -90.0)
+                {
+                    throw new ArgumentOutOfRangeException("Celsius temp below -90.0");
+                }
+                if (value > 60.0)
+                {
+                    throw new ArgumentOutOfRangeException("Celsius temp above +60.0");
+                }
                 celsius = value;
             }
         }
@@ -37,8 +43,15 @@ namespace Roman_Numeral_Thermometer
             { return (celsius * 9 / 5 + 32.0); }
             set
             {
-                // TODO Exception handling for input below -130.0
-                // TODO Exception handling for input above +140.0
+                if (value < -130.0)
+                {
+                    throw new ArgumentOutOfRangeException("Fahrenheit temp below -130.0");
+                }
+                if (value > 140.0)
+                {
+                    throw new ArgumentOutOfRangeException("Fahrenheit temp above +140.0");
+                }
+
                 celsius = (value - 32.0) * 5 / 9; }
             }
         }

@@ -20,6 +20,15 @@ namespace Roman_Numeral_Thermometer_Tests
         }
 
         [TestMethod]
+        public void Cexceptions()
+        {
+            Assert.ThrowsException<System.ArgumentOutOfRangeException>(() =>
+                new OutdoorTemperature() { Celsius = -200.0 });
+            Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => 
+                new OutdoorTemperature() { Celsius = 200.0 });
+        }
+
+        [TestMethod]
         public void FtoC()
         {
             OutdoorTemperature test1 = new() { Fahrenheit = -40.0 };
@@ -31,5 +40,15 @@ namespace Roman_Numeral_Thermometer_Tests
             OutdoorTemperature test3 = new() { Fahrenheit = 100.0 };
             Assert.AreEqual(37.7, test3.Celsius, 0.1, "100F != 37.7C");
         }
+
+        [TestMethod]
+        public void Fexceptions()
+        {
+            Assert.ThrowsException<System.ArgumentOutOfRangeException>(() =>
+                new OutdoorTemperature() { Fahrenheit = -300.0 });
+            Assert.ThrowsException<System.ArgumentOutOfRangeException>(() =>
+                new OutdoorTemperature() { Fahrenheit = 300.0 });
+        }
+
     }
 }
