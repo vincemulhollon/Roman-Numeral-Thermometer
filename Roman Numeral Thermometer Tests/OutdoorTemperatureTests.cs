@@ -24,6 +24,7 @@ namespace Roman_Numeral_Thermometer_Tests
         {
             Assert.ThrowsException<System.ArgumentOutOfRangeException>(() =>
                 new OutdoorTemperature() { Celsius = -200.0 });
+
             Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => 
                 new OutdoorTemperature() { Celsius = 200.0 });
         }
@@ -46,9 +47,46 @@ namespace Roman_Numeral_Thermometer_Tests
         {
             Assert.ThrowsException<System.ArgumentOutOfRangeException>(() =>
                 new OutdoorTemperature() { Fahrenheit = -300.0 });
+
             Assert.ThrowsException<System.ArgumentOutOfRangeException>(() =>
                 new OutdoorTemperature() { Fahrenheit = 300.0 });
         }
 
+        [TestMethod]
+        public void Roman()
+        {
+            OutdoorTemperature testminus5 = new() { Fahrenheit = -5.0 };
+            Assert.AreEqual("-V", testminus5.Roman(), "-5 != -V");
+
+            OutdoorTemperature test1 = new() { Fahrenheit = 1.0 };
+            Assert.AreEqual("I", test1.Roman(), "1 != I");
+
+            OutdoorTemperature test3 = new() { Fahrenheit = 3.0 };
+            Assert.AreEqual("III", test3.Roman(), "3 != III");
+
+            OutdoorTemperature test4 = new() { Fahrenheit = 4.0 };
+            Assert.AreEqual("IV", test4.Roman(), "4 != IV");
+
+            OutdoorTemperature test5 = new() { Fahrenheit = 5.0 };
+            Assert.AreEqual("V", test5.Roman(), "5 != V");
+
+            OutdoorTemperature test9 = new() { Fahrenheit = 9.0 };
+            Assert.AreEqual("IX", test9.Roman(), "9 != IX");
+
+            OutdoorTemperature test10 = new() { Fahrenheit = 10.0 };
+            Assert.AreEqual("X", test10.Roman(), "10 != X");
+
+            OutdoorTemperature test45 = new() { Fahrenheit = 45.0 };
+            Assert.AreEqual("XLV", test45.Roman(), "45 != XLV");
+
+            OutdoorTemperature test58 = new() { Fahrenheit = 58.0 };
+            Assert.AreEqual("LVIII", test58.Roman(), "58 != LVIII");
+
+            OutdoorTemperature test94 = new() { Fahrenheit = 94.0 };
+            Assert.AreEqual("XCIV", test94.Roman(), "94 != XCIV");
+
+            OutdoorTemperature test103 = new() { Fahrenheit = 103.0 };
+            Assert.AreEqual("CIII", test103.Roman(), "103 != CIII");
+        }
     }
 }
