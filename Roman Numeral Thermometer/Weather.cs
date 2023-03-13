@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Diagnostics;
 
 namespace Roman_Numeral_Thermometer
@@ -54,13 +54,12 @@ namespace Roman_Numeral_Thermometer
             client.DefaultRequestHeaders.Add("User-Agent", "(springcitysolutions.com, vince.mulhollon@springcitysolutions.com)");
 
             string responseBody = await client.GetStringAsync(client.BaseAddress);
+            // Console.WriteLine(responseBody);
 
-            // TODO: Parse the response
-            // Or, until then,
-            // console the response
-            // and change the temp to -14.0 C
-            Console.WriteLine(responseBody);
-            temperature = -14.0;
+            // https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/use-dom-utf8jsonreader-utf8jsonwriter?pivots=dotnet-7-0#use-jsonnode
+            JsonNode jsonNode = JsonNode.Parse(responseBody)!;
+            // Console.WriteLine(jsonNode!["properties"]!["temperature"]!["value"]!);
+            temperature = jsonNode!["properties"]!["temperature"]!["value"]!.GetValue<int>();
 
             Initiated = true;
         }

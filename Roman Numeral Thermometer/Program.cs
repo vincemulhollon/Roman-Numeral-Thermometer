@@ -12,8 +12,9 @@ class Program
         if (weather.Initiated)
         {
             temperature.Celsius = weather.TemperatureCelsius();
-            Console.WriteLine("Note that -14C is about +7F aka VII in Roman Numerals");
-            Console.WriteLine(temperature.Roman());
+            Console.WriteLine("NWS KUES Airport Temp Decimal C: " + temperature.Celsius);
+            Console.WriteLine("NWS KUES Airport Temp Decimal F: " + temperature.Fahrenheit);
+            Console.WriteLine("NWS KUES Airport Temp Roman Numeral F: " + temperature.Roman());
         }
     }
 }
