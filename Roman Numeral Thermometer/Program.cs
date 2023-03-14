@@ -17,7 +17,8 @@ class Program
             Console.WriteLine("NWS KUES Airport Temp Roman Numeral F: " + temperature.Roman());
 
             Database database = new Database(temperature);
-            database.insert();
+            // TODO: commented out until DB is set up.
+            // database.insert();
         }
     }
 }
