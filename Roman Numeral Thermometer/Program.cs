@@ -15,6 +15,9 @@ class Program
             Console.WriteLine("NWS KUES Airport Temp Decimal C: " + temperature.Celsius);
             Console.WriteLine("NWS KUES Airport Temp Decimal F: " + temperature.Fahrenheit);
             Console.WriteLine("NWS KUES Airport Temp Roman Numeral F: " + temperature.Roman());
+
+            Database database = new Database(temperature);
+            database.insert();
         }
     }
 }
